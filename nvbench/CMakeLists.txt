@@ -67,7 +67,7 @@ nvbench_write_config_header(config.cuh.in
 )
 
 # nvbench (nvbench::nvbench)
-add_library(nvbench OBJECT ${srcs})
+add_library(nvbench STATIC ${srcs})
 nvbench_config_target(nvbench)
 target_include_directories(nvbench PUBLIC
   "$<BUILD_INTERFACE:${NVBench_SOURCE_DIR}>"
