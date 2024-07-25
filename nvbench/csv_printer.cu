@@ -88,6 +88,11 @@ void csv_printer::do_print_benchmark_results(const benchmark_vector &benches)
                          fmt::format("2^{}", exponent));
           table.add_cell(row, name + "_axis_plain", fmt::format("{}", name), fmt::to_string(value));
         }
+        else if (axis_values.get_type(name) == named_values::type::string) {
+          std::string value = std::visit(format_visitor, axis_values.get_value(name));
+          std::string apostrophe = "\"";
+          table.add_cell(row, name + "_axis", name, std::move(apostrophe + value + apostrophe));
+        }
         else
         {
           std::string value = std::visit(format_visitor, axis_values.get_value(name));
