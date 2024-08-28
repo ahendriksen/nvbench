@@ -36,6 +36,7 @@ device_manager &device_manager::get()
 device_manager::device_manager()
 {
   int num_devs{};
+  NVBENCH_CUDA_CALL(cudaDeviceSynchronize());
   NVBENCH_CUDA_CALL(cudaGetDeviceCount(&num_devs));
   m_devices.reserve(static_cast<std::size_t>(num_devs));
 
