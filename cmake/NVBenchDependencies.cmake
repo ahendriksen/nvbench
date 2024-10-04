@@ -56,7 +56,7 @@ rapids_find_package(CUDAToolkit REQUIRED
 )
 
 # Append CTK targets to this as we add optional deps (NMVL, CUPTI, ...)
-set(ctk_libraries CUDA::toolkit)
+set(ctk_libraries CUDA::toolkit CUDA::cuda_driver)
 
 ################################################################################
 # CUDAToolkit -> NVML
@@ -69,5 +69,5 @@ endif()
 # CUDAToolkit -> CUPTI
 if (NVBench_ENABLE_CUPTI)
   include("${CMAKE_CURRENT_LIST_DIR}/NVBenchCUPTI.cmake")
-  list(APPEND ctk_libraries CUDA::cuda_driver nvbench::cupti)
+  list(APPEND ctk_libraries nvbench::cupti)
 endif()
