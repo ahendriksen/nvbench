@@ -148,7 +148,6 @@ catch (nvml::call_failed &e)
 }
 #endif // NVBENCH_HAS_NVML
 
-#ifdef NVBENCH_HAS_CUPTI
 [[nodiscard]] CUcontext device_info::get_context() const
 {
   if (!is_active())
@@ -160,6 +159,5 @@ catch (nvml::call_failed &e)
   NVBENCH_DRIVER_API_CALL(cuCtxGetCurrent(&cu_context));
   return cu_context;
 }
-#endif
 
 } // namespace nvbench

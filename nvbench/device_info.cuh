@@ -185,9 +185,7 @@ struct device_info
 #endif
   }
 
-#ifdef NVBENCH_HAS_CUPTI
   [[nodiscard]] CUcontext get_context() const;
-#endif
 
   /// @return A cached copy of the device's cudaDeviceProp.
   [[nodiscard]] const cudaDeviceProp &get_cuda_device_prop() const { return m_prop; }
